@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310070407) do
+ActiveRecord::Schema.define(:version => 20130311145811) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "categories_manuals", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "manual_id"
+  end
+
+  add_index "categories_manuals", ["category_id", "manual_id"], :name => "index_categories_manuals_on_category_id_and_manual_id"
+
+  create_table "manuals", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.date     "publish_data"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

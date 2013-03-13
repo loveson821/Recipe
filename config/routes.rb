@@ -1,8 +1,14 @@
 Recipe::Application.routes.draw do
+  resources :categories
+
+
+  resources :manuals
+
+
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'Manuals#index'
   end
-  root :to => "home#index"
+  root :to => "Manuals#index"
   devise_for :users
   resources :users
 end

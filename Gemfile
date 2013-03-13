@@ -27,3 +27,6 @@ gem "figaro", ">= 0.5.3"
 gem "better_errors", ">= 0.6.0", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
+gem "will_paginate"
+gem "twitter-bootstrap-rails"
+gem "hirb"

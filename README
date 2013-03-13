@@ -1,4 +1,26 @@
 Recipe
+
+=======================
+Added:
+1. gem "will_paginate"
+2. gem "twitter-bootstrap-rails"
+3. model manuals, categories
+4. 
+
+remark:
+1)
+if using "twitter-bootstrap-rails", remember to remove default scaffolds.css.scss
+> rm app/assets/stylesheets/scaffolds.css.scss
+then use this command to generate bootstrap theme to models 
+> rails g bootstrap:themed manuals -f
+> rails g bootstrap:themed categories -f
+
+-f : force override 
+
+2)
+Manuals and categories are many to many relationship, therefore create a relationship table categories_manuals
+> rails g migration categories_manuals
+
 ========================
 
 This application was generated with the rails_apps_composer gem:
