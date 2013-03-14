@@ -24,6 +24,8 @@
   -for step in @manual.steps   
     %br
     = step.text
+    -unless step.new_record?
+      = link_to image_tag(step.image.url(:thumb)), step.image.url(:original)
   
 
 .form-actions

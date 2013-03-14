@@ -2,14 +2,16 @@ Recipe
 
 =======================
 Added:
-1. nested_form
-2. bugs fix
+1. paperclip
 
 remark:
 
-Remember the css class ' .fields ' in nested_form is necessary. Otherwise, ' link_to_remove ' won't working. 
+Using 
+>rails g paperclip step image 
+to generate the migration
 
-
+Use <% unless step.new_record? %> to check if the step not exist in record.
+If you don't have a step record, then rails will create a new step record, therefore, we check by the 'new_record?'
 
 ========================
 
