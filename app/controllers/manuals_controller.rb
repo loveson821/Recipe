@@ -17,7 +17,7 @@ class ManualsController < ApplicationController
   # GET /manuals/1.json
   def show
     @manual = Manual.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @manual }
@@ -28,7 +28,7 @@ class ManualsController < ApplicationController
   # GET /manuals/new.json
   def new
     @manual = Manual.new
-
+    1.times {@manual.steps.build}
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @manual }

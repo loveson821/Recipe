@@ -30,3 +30,4 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "will_paginate"
 gem "twitter-bootstrap-rails"
 gem "hirb"
+gem "nested_form"
