@@ -2,24 +2,14 @@ Recipe
 
 =======================
 Added:
-1. gem "will_paginate"
-2. gem "twitter-bootstrap-rails"
-3. model manuals, categories
-4. 
+1. nested_form
+2. bugs fix
 
 remark:
-1)
-if using "twitter-bootstrap-rails", remember to remove default scaffolds.css.scss
-> rm app/assets/stylesheets/scaffolds.css.scss
-then use this command to generate bootstrap theme to models 
-> rails g bootstrap:themed manuals -f
-> rails g bootstrap:themed categories -f
 
--f : force override 
+Remember the css class ' .fields ' in nested_form is necessary. Otherwise, ' link_to_remove ' won't working. 
 
-2)
-Manuals and categories are many to many relationship, therefore create a relationship table categories_manuals
-> rails g migration categories_manuals
+
 
 ========================
 

@@ -7,9 +7,10 @@
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:body)
-      %th= model_class.human_attribute_name(:publish_data)
+      %th= model_class.human_attribute_name(:publish_date)
       %th= model_class.human_attribute_name(:user_id)
       %th= model_class.human_attribute_name(:created_at)
+      
       -if current_user && ( current_user.has_role?(:admin) || current_user.id == model_class.user_id)
         %th=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -18,9 +19,10 @@
         %td= link_to manual.id, manual_path(manual)
         %td= manual.title
         %td= manual.body
-        %td= manual.publish_data
+        %td= manual.publish_date
         %td= manual.user_id
         %td=l manual.created_at
+        
         
         -if current_user && ( current_user.has_role?(:admin) || current_user.id == model_class.user_id)
           %td

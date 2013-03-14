@@ -44,7 +44,7 @@ class ManualsController < ApplicationController
   # POST /manuals.json
   def create
     @manual = Manual.new(params[:manual])
-    @post.user_id = current_user.id
+    @manual.user_id = current_user.id
     
 
     respond_to do |format|

@@ -11,13 +11,20 @@
   %br
   = @manual.body
 %p
-  %strong= model_class.human_attribute_name(:publish_data) + ':'
+  %strong= model_class.human_attribute_name(:publish_date) + ':'
   %br
-  = @manual.publish_data
+  = @manual.publish_date
 %p
   %strong= model_class.human_attribute_name(:user_id) + ':'
   %br
   = @manual.user_id
+
+%p
+  %strong= model_class.human_attribute_name(:steps) + ':'
+  -for step in @manual.steps   
+    %br
+    = step.text
+  
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), manuals_path, :class => 'btn'

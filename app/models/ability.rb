@@ -16,9 +16,9 @@ class Ability
       # if user.new_record? is true this means the session belongs to a not
       # signed in user.
     unless user.new_record?
-      can: create, Manual
-      can: update, Manual, :user_id => user.id
-      can: destroy, Manual, :user_id => user.id
+      can :create, Manual
+      can :update, Manual, :user_id => user.id
+      can :destroy, Manual, :user_id => user.id
     end
     # Define abilities for the passed in user here. For example:
     #
