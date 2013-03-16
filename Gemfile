@@ -27,8 +27,11 @@ gem "figaro", ">= 0.5.3"
 gem "better_errors", ">= 0.6.0", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
-gem "will_paginate"
+#gem "will_paginate"
 gem "twitter-bootstrap-rails"
 gem "hirb"
 gem "nested_form"
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 2.8"
+gem "spree", "1.3.1"
+gem 'spree_gateway', :github => 'spree/spree_gateway', :branch => '1-3-stable'
+gem 'spree', '1.3.1'

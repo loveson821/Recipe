@@ -28,3 +28,6 @@ end
 
 puts 'user: ' << user.name
 user.add_role :admin
+
+Spree::Core::Engine.load_seed if defined?(Spree::Core)
+Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
