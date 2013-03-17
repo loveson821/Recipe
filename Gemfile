@@ -34,4 +34,3 @@ gem "nested_form"
 gem "paperclip", "~> 2.8"
 gem "spree", "1.3.1"
 gem 'spree_gateway', :github => 'spree/spree_gateway', :branch => '1-3-stable'
-gem 'spree', '1.3.1'

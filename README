@@ -3,10 +3,11 @@ Recipe
 =======================
 Added:
 1. previous commit installed spree by 'spree update'
+2. Using deface to add login bar to "Spree"
 
 remark:
 
-Using 
+If you are using admin to login, you can enter into spree/admin page, otherwise, it throw an error. 
 
 ========================
 
