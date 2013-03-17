@@ -7,6 +7,12 @@ Recipe::Application.routes.draw do
   # We ask that you don't use the :as option here, as Spree relies on it being the default of "spree"
   mount Spree::Core::Engine, :at => '/shop'
   
+  devise_scope :user do
+    get '/login', :to => "devise/sessions#new"
+    get '/signup', :to => "devise/registrations#new"
+    delete '/logout', :to => "devise/sessions#destroy"
+  end
+  
   resources :categories
 
 
