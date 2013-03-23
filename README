@@ -2,12 +2,24 @@ Recipe
 
 =======================
 Added:
-1. previous commit installed spree by 'spree update'
-2. Using deface to add login bar to "Spree"
+1. Linked manual to products
+
 
 remark:
 
-If you are using admin to login, you can enter into spree/admin page, otherwise, it throw an error. 
+Manual has one products
+Products belongs to manual
+
+>rails g migration AddManualIdToProducts
+
+Since products are in Spree, the path we pointed to shop, therefore, we add these line in routes:
+
+  namespace :shop do
+    resources :products
+  end
+
+In views: use this line to link:
+shop_product_path(@manual.spree_products)
 
 ========================
 

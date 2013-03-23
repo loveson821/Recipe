@@ -26,8 +26,11 @@
     = step.text
     -unless step.new_record?
       = link_to image_tag(step.image.url(:thumb)), step.image.url(:original)
-  
 
+//-if @manual.spree_products?
+= link_to 'Spree product', shop_product_path(@manual.spree_products)
+//%p
+//  = @manual.spree_products
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), manuals_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_manual_path(@manual), :class => 'btn'

@@ -15,7 +15,10 @@ Recipe::Application.routes.draw do
   
   resources :categories
 
-
+  namespace :shop do
+    resources :products
+  end
+  
   resources :manuals
 
 

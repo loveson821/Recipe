@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317043025) do
+ActiveRecord::Schema.define(:version => 20130323062952) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -341,6 +341,7 @@ ActiveRecord::Schema.define(:version => 20130317043025) do
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.boolean  "on_demand",            :default => false
+    t.integer  "manual_id"
   end
 
   add_index "spree_products", ["available_on"], :name => "index_spree_products_on_available_on"
