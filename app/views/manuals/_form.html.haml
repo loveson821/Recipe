@@ -3,6 +3,10 @@
   = f.input :body
   = f.input :publish_date
   = f.association :categories, :as => :check_boxes
+  = f.input :cookTime
+  = f.input :kcal
+  = f.input :quantity
+  = f.input :difficulty
   
   /= f.fields_for :steps do |ff|
   /  = ff.text_field :text

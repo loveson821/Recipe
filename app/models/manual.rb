@@ -1,5 +1,6 @@
 class Manual < ActiveRecord::Base
-  attr_accessible :body, :publish_date, :title, :category_ids, :step_ids, :steps_attributes, :spree_products
+  attr_accessible :body, :publish_date, :title, :category_ids, :step_ids, :steps_attributes, :spree_products, :cookTime, :quantity, :kcal, :difficulty
+  
   validates_presence_of :body, :publish_date, :title, :user_id
   belongs_to :user
   has_and_belongs_to_many :categories
