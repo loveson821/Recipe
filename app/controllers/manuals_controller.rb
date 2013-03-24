@@ -1,6 +1,6 @@
 class ManualsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => :index
+  before_filter :authenticate_user!, :except => [:index,:show]
   
   # GET /manuals
   # GET /manuals.json
@@ -29,6 +29,8 @@ class ManualsController < ApplicationController
   def new
     @manual = Manual.new
     1.times {@manual.steps.build}
+    1.times {@manual.materials.build}
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @manual }

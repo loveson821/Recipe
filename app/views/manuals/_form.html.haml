@@ -11,6 +11,15 @@
     = render 'step', f: b 
     
   = f.link_to_add "Add a step", :steps, :data => {:target => "#steps"}
+  
+  = f.fields_for :materials, :wrapper => false do |b|
+    = render 'material', f:b
+    
+  = f.link_to_add "Add a material", :materials, :data => {:target => "{#materials}"}
+  
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), manuals_path, :class => 'btn'
+
+
+  
