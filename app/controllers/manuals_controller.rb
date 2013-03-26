@@ -87,4 +87,10 @@ class ManualsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def search
+    respond_to do |format|
+      format.json {render json: @search_result}
+    end
+  end
 end
