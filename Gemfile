@@ -5,6 +5,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-fileupload-rails'
 end
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
@@ -34,3 +35,4 @@ gem "nested_form"
 gem "paperclip", "~> 2.8"
 gem "spree", "1.3.1"
 gem 'spree_gateway', :github => 'spree/spree_gateway', :branch => '1-3-stable'
+gem 'carrierwave'

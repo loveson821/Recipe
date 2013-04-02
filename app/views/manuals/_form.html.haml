@@ -7,6 +7,10 @@
   = f.input :kcal
   = f.input :quantity
   = f.input :difficulty
+  = f.file_field :image
+  
+  %div#main-photo
+  
   
   /= f.fields_for :steps do |ff|
   /  = ff.text_field :text
@@ -25,5 +29,3 @@
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), manuals_path, :class => 'btn'
 
-
-  

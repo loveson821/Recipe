@@ -1,0 +1,5 @@
+<% if @manual.new_record? %>
+  alert("Failed to upload")
+<% else %>
+  $('#main-photo').html('<%= j image_tag @manual.image_url.to_s %>');
+<% end %>

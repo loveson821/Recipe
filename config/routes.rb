@@ -19,7 +19,12 @@ Recipe::Application.routes.draw do
     resources :products
   end
   
-  resources :manuals
+  resources :manuals do
+    collection do
+      get :search
+    end
+  end
+  
 
 
   authenticated :user do

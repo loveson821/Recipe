@@ -48,16 +48,19 @@ class ManualsController < ApplicationController
     @manual = Manual.new(params[:manual])
     @manual.user_id = current_user.id
     
-
+    
     respond_to do |format|
       if @manual.save
-        format.html { redirect_to @manual, notice: 'Manual was successfully created.' }
-        format.json { render json: @manual, status: :created, location: @manual }
+        #format.html { redirect_to @manual, notice: 'Manual was successfully created.' }
+        #format.json { render json: @manual, status: :created, location: @manual }
+        format.js
       else
-        format.html { render action: "new" }
-        format.json { render json: @manual.errors, status: :unprocessable_entity }
+        #format.html { render action: "new" }
+        #format.json { render json: @manual.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+    
   end
 
   # PUT /manuals/1
@@ -88,9 +91,13 @@ class ManualsController < ApplicationController
     end
   end
   
+  # Search /manuals?search=[:search]
+  # Not finish
   def search
     respond_to do |format|
       format.json {render json: @search_result}
     end
   end
+  
+  
 end

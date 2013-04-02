@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileUpload/basic
 //= require bootstrap
 // require_tree .
 //= require nested_form
+//= require manuals

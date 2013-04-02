@@ -1,6 +1,9 @@
 - model_class = Manual
 .page-header
   %h1=t '.title', :default => model_class.model_name.human
+  - unless @manual.new_record?
+    - unless @manual.image_url.to_s.empty?
+      = image_tag @manual.image_url.to_s
 
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
@@ -23,12 +26,13 @@
   %strong= model_class.human_attribute_name(:steps) + ':'
   -for step in @manual.steps   
     %br
-    = step.text
     -unless step.new_record?
-      = link_to image_tag(step.image.url(:thumb)), step.image.url(:original)
+      - if step.image.blank?
+        = step.text
+        = link_to image_tag(step.image.url(:thumb)), step.image.url(:original)
 
 //-if @manual.spree_products?
-= link_to 'Spree product', shop_product_path(@manual.spree_products)
+//= link_to 'Spree product', shop_product_path(@manual.spree_products)
 //%p
 //  = @manual.spree_products
 .form-actions
