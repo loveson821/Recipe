@@ -1,6 +1,7 @@
 .fields
   = f.text_field :text
-  = f.file_field :image 
+  %span.fileholder
+    = f.file_field :image 
   = f.link_to_remove "Remove this step"
   - if f.object.image.exists?
     = image_tag(f.object.image.url(:thumb))

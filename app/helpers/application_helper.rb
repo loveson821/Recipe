@@ -11,5 +11,18 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
+  
+  # Using for get Devise resouce because I move the signIn/Up form to index page
+  def resource_name
+    :user
+  end
 
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+  
 end

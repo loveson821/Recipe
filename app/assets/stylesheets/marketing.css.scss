@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+@import "bootstrap_and_overrides";
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, "微軟正黑體", sans-serif;
+}
+
+.main {
+	.narrow-container {
+		max-width: 1170px;
+		margin: 0 auto;
+
+		.quote-block {
+			padding: 24px 0 36px 0;
+			.left-quote { 
+			   	@include quote("quote-left.png");
+			}
+			.right-quote { 
+			   	@include quote("quote-right.png");
+			}
+
+			.msg { 
+				color: $grayLight;
+				font-weight: normal;
+				display: inline-block;
+			}
+		}
+		
+
+		.left-view {
+
+			.title { font-size: 50px; color: $grayDark; }
+
+			.subtitle { font-size: 18px; color: $grayLight;}
+		}
+
+
+		.right-view {
+			input {
+				height: 38px;
+				margin-bottom: 8px;
+			}
+
+			p { color: $grayLight; }
+
+			hr { margin: 5px 0; height: 6px;}
+
+			.btn-primary { @include buttonBackground(#ff207b, #e81563); }
+		}
+	}
+}
+
+// footer {
+
+// }
+
+
+footer[role="contentinfo"]{
+
+	nav ul li {
+		margin: 0 10px 0 0;
+		padding: 0 10px 0 0;
+		font-weight: bold;
+		border-right: 1px solid #ccc;
+
+		&:last-child {
+			border: none;
+		}
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	.copyright {
+		color: $grayLight;
+	}
+}

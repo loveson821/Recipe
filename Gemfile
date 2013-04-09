@@ -1,15 +1,24 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'sqlite3'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-fileupload-rails'
+  gem 'compass-rails'
 end
+
+group :development do
+  gem "haml-rails"
+  gem "markdown"
+  gem 'bourbon'
+end
+
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
-gem "haml-rails", ">= 0.4"
+#gem "haml-rails", ">= 0.4"
 gem "html2haml", ">= 1.0.1", :group => :development
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
@@ -36,3 +45,4 @@ gem "paperclip", "~> 2.8"
 gem "spree", "1.3.1"
 gem 'spree_gateway', :github => 'spree/spree_gateway', :branch => '1-3-stable'
 gem 'carrierwave'
+gem 'hisrc-rails'

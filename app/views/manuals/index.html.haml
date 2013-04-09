@@ -11,7 +11,7 @@
       %th= model_class.human_attribute_name(:user_id)
       %th= model_class.human_attribute_name(:created_at)
       
-      -if current_user && ( current_user.has_role?(:admin) || current_user.id == model_class.user_id)
+      -if current_user &&  current_user.has_role?(:admin) #|| current_user.id == model_class.user_id)
         %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @manuals.each do |manual|
@@ -24,7 +24,7 @@
         %td=l manual.created_at
         
         
-        -if current_user && ( current_user.has_role?(:admin) || current_user.id == model_class.user_id)
+        -if current_user && ( current_user.has_role?(:admin) || current_user.id == :user_id ) 
           %td
             = link_to t('.edit', :default => t("helpers.links.edit")), edit_manual_path(manual), :class => 'btn btn-mini'
             = link_to t('.destroy', :default => t("helpers.links.destroy")), manual_path(manual), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'

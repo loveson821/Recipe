@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable , :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :email, :password, :password_confirmation
   
   has_many :manuals
+  
+  before_save :skip_confirmation!
+  
 end

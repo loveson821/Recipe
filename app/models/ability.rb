@@ -8,7 +8,7 @@ class Ability
     end
     
     # Everyone can read Manual
-    can :read, Manual
+    can :read, :all
     
     # Called by cancan with the current_user or nil if
       # no user signed in. If so, we create a new user object which can be

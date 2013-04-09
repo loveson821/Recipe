@@ -1,3 +1,19 @@
 // Place all the styles related to the manuals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.fileholder{
+  background: url('http://assets3.icook.tw/assets/resources/step-pic-2f928e11cc3b626eb7b96e48e015de81.png');
+  width: 88px;
+  height: 64px;
+  z-index: 100;
+  display: inline-block;
+  margin-bottom: 10px;
+  
+  input[type=file]{
+    width: 88px;
+    height: 64px;
+    opacity: 0;
+  }
+}
+

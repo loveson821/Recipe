@@ -1,3 +1,65 @@
+/*
+ * This is the file used to overide the elements in bootstrap
+ * any overide variable or css should be placed at the top of the file
+ * otherwise, it will not take any effect.
+ * Any shared overide value should be place in here
+ */
+
+
+/**
+ * Description: import bootstrap
+*/	
+
+
+@import "variables";
 @import "bootstrap";
-body { padding-top: 60px; }
-@import "bootstrap-responsive";
+@import "mixins";
+
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+.navbar { 
+	margin-bottom: 0; 
+}
+
+.navbar .navbar-inner { 
+	border-radius: 0;
+
+	.container{
+		height: auto;
+		.brand { color: #666;  padding-top: 10px; padding-bottom: 10px; font-weight: bold;}
+	}
+}
+ 
+.hero-unit {
+	text-align: center;
+	background-color: $myHeroUnitBackgroundColor;
+
+	h2 { 
+		color: $myHeroTitleColor;
+		font-size: 36px;
+	}
+}
+
+
+.btn-primary { @include buttonBackground(#ff207b, #e81563); }
+
+// @import "bootstrap-responsive";
+
+// @media (min-width: 768px) {
+//   .left-view { padding-top: 60px; }
+// } 
+
+
+// @media (max-width: 768px) {
+//   body {padding: 0px 0px;}
+//   .main {padding: 0 20px;}
+//   .hero-unit h2 {font-size: 26px;}
+//   .left-view { padding-top: 0px; }
+//   footer {text-align: center;}
+// } 
+

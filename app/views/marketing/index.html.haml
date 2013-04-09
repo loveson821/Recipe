@@ -1,0 +1,103 @@
+.navbar
+  .navbar-inner
+    .container
+      %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => "#"} 
+        = responsive_image_tag("logo.png")
+        %span Cookquery
+      .nav-collapse.collapse
+        / %ul.nav
+        /   %li.active
+        /     %a{:href => "#"} Home
+        /   %li
+        /     %a{:href => "#about"} About
+        /   %li
+        /     %a{:href => "#contact"} Contact
+        /   %li.dropdown
+        /     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} 
+        /       Dropdown
+        /       %b.caret
+        /     %ul.dropdown-menu
+        /       %li
+        /         %a{:href => "#"} Action
+        /       %li
+        /         %a{:href => "#"} Another action
+        /       %li
+        /         %a{:href => "#"} Something else here
+        /       %li.divider
+        /       %li.nav-header Nav header
+        /       %li
+        /         %a{:href => "#"} Separated link
+        /       %li
+        /         %a{:href => "#"} One more separated link
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'navbar-form pull-right' }) do |f|
+          = f.text_field :email, :autofocus => true, :class => 'span2', :placeholder => 'Email'
+          = f.password_field :password, :class => 'span2', :placeholder => 'Password'
+          /= f.check_ :remember_me, :as => :boolean if devise_mapping.rememberable?
+          = f.submit "Sign in", :class=> 'btn signin'
+        
+        /
+          %form.navbar-form.pull-right
+            %input.span2{:placeholder => "Email", :type => "text"}
+            %input.span2{:placeholder => "Password", :type => "password"}
+            %button.btn.signin{:type => "submit"} 
+              %b Sign in
+        
+
+
+.hero-unit   
+  %div
+    = responsive_image_tag("intro.png")  
+    %h2 That’s All You Need to Know 
+
+.container.main
+  .narrow-container
+    .row.quote-block.text-center
+      %span.left-quote
+      %h3.msg 使用 Cookquery 後你便會發現到原來烹飪就是這麼簡單，動動手試試看吧。
+      %span.right-quote
+    .row
+      .span7.left-view
+        %h1.title 一起來烹飪吧
+        %blockquote
+          %p.subtitle 是一個介紹食譜、烹飪和銷售食材和調味料的網站。提供一站式服務，包括購買食材、香料和用具等。用戶只需根據本站的食譜即可制作出各種美味的料理。對料理有興趣的你必不能錯過的網站喔！！
+      .span4.offset1.right-view
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'pull-right' }) do |f|
+          /= f.error_notification
+          /= display_base_errors resource
+          = f.text_field :name, :autofocus => true, :class => 'span4', placeholder: 'Username'
+          = f.text_field :email, :required => true, :class => 'span4', placeholder: 'Email'
+          = f.password_field :password, :required => true, class: 'span4', placeholder: 'Password'
+          = f.password_field :password_confirmation, :required => true, placeholder: 'Confirm Password', class: 'span4'
+          
+          :markdown
+            輸入以上的資料，輕輕鬆鬆注冊，當點擊注冊時即等同於同意 [Cookquery Terms](http://ruby-lang.org) .
+        
+          %hr
+          /= button_tag (type: 'button', :class => 'btn btn-primary btn-large btn-block' )
+          /= f.submit '<b>即時注冊</b>'.html_safe, :class => 'btn btn-primary btn-large btn-block'
+          = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large btn-block', name: 'commit' ) do
+            = content_tag(:strong, '即時注冊')
+            
+              
+    %hr
+
+    %footer{:role => "contentinfo"}
+      %nav{:role => "navigation"}
+        %ul.inline
+          %li
+            %a{:href => "#"} About
+          %li
+            %a{:href => "#"} FAQ
+          %li
+            %a{:href => "#"} Contact
+          %li
+            %a{:href => "#"} Advertise
+          %li
+            %a{:href => "#"} Terms
+      %p.copyright Copyright &copy; 2013 Cookquery, Macau, China
+
+= javascript_include_tag "application"

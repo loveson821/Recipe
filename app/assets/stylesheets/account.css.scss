@@ -1,0 +1,53 @@
+// Place all the styles related to the account controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap_and_overrides";
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, "微軟正黑體", sans-serif;
+}
+
+body {
+	background-color: #eeeeee;
+	color: #606468;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+}
+
+.wrapper
+{
+	width: 320px;
+	margin: 120px auto;
+	
+	.logo{
+			margin: 0 auto 10px auto;
+			width: 150px;
+	}
+
+	form {
+
+		
+		.input-prepend {
+			.add-on {
+				height: 30px;
+				min-width: 30px;
+				line-height: 30px;
+			}
+			#prependedInput {
+				width: 265px;
+				height: 30px;
+			}
+		}
+
+		p { 
+			color: $grayLight; 
+			text-align: center; 
+			margin-top: 8px;
+
+		}
+
+		.btn-primary { @include buttonBackground(#ff207b, #e81563); }
+	}
+}

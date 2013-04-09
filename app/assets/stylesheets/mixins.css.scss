@@ -1,0 +1,6 @@
+@mixin quote($name) {
+	background:image-url($name) left top; 
+	width:32px; 
+	height:21px;
+	display: inline-block;
+}
