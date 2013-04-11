@@ -28,6 +28,9 @@ Recipe::Application.routes.draw do
     end
   end
   
+  namespace :admin do
+    
+  end
 
 
   authenticated :user do

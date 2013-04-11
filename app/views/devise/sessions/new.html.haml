@@ -1,7 +1,39 @@
-%h2 Sign in
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-  = f.input :email, :autofocus => true
-  = f.input :password
-  = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-  = f.button :submit, "Sign in", :class => 'btn-primary'
-= render "devise/shared/links"
+/
+  %h2 Sign in
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+    = f.input :email, :autofocus => true
+    = f.input :password
+    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+    = f.button :submit, "Sign in", :class => 'btn-primary'
+  = render "devise/shared/links"
+
+.wrapper
+  #login
+    .logo
+      =image_tag("logo-login.png")
+    /%form
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .input-prepend
+        %span.add-on
+          /%i.fontawesome-envelope
+          /= label 'user_email',nil, class: 'fontawesome-envelope'
+          %label.fontawesome-envelope{:for => 'user_email'}
+        /%input#prependedInput{:type => "text", :placeholder=>"電郵"}
+        = f.text_field :email, :autofocus => true, class: 'prependedInput', placeholder: '電郵', label: false
+      .input-prepend
+        %span.add-on
+          /%i.fontawesome-key
+          %label.fontawesome-key{:for => 'user_password'}
+        /%input#prependedInput{:type => "password", :placeholder=>"密碼"}
+        = f.text_field :password, :autofocus => true, class: 'prependedInput', placeholder: '電郵', type: 'password'
+      /%button.btn.btn-primary.btn-large.btn-block{:type => "submit"} 
+      = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large btn-block', name: 'commit' ) do
+        = content_tag(:strong, '登入')
+        /%b 登入
+      %p
+        %label.checkbox.pull-left
+          %input{:type => "checkbox"} 記住我
+        %span.pull-right
+          還未成為會員? 
+          %a{:href => "signup"} 立即註冊
+          %span.fontawesome-arrow-right
