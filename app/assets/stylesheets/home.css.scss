@@ -1,3 +1,485 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import "bourbon";
+@import "mixins";
+@import "variables";
+// @import "compass";
+
+
+@import url(http://fonts.googleapis.com/css?family=Nothing+You+Could+Do);
+// $default-font: "Helvetica Neue", Helvetica, Arial, "微軟正黑體", sans-serif;
+
+
+.hidden { display: none;}
+
+.clearfix {@include clearfix();}
+
+hr {padding: 0; margin: 0;}
+
+html, body {
+    background-color: $superLightGray;
+    // font-family: $default-font; 
+  }
+
+.left-navigation, .navigation-list, .scrollable, .bottom-bar,
+.media-list, .content { height: 100%;}
+
+/*----------------- navbar css start from here -----------------*/
+.navbar {
+
+	[class*="highlight-bar"] {
+    background-color: #f13c8d;
+    @include size(100% 4px);}
+
+  .navbar-inner {
+  	@include background-image(linear-gradient(white 0, white 100%, transparent 0%));}}
+
+/*----------------- alert css start from here -----------------*/
+.navbar .alert { margin-bottom: 0;}
+
+/*----------------- _name css start from here -----------------*/
+.navbar .categories {
+  .selected {background-color: #0081c2;
+    a {color: white;}}}
+
+/*----------------- .tool-bar css start from here -----------------*/	
+.tool-bar > li {
+  border-left: 1px solid $grayLighter;
+  cursor: pointer;
+  height: 60px;
+  min-width: 85px;
+  
+  &:hover { background-color: $superLightGray; }
+
+  i { margin: auto 4px;}}
+
+
+/*----------------- left-navigation css start from here -----------------*/
+.left-navigation {	
+  @include scrollable(hidden);
+
+	.navigation-list {
+    background-color: $left-content-background-color;
+    margin-top: $topMargin;
+    text-shadow: 0px 1px white;
+    width: $left-view-width;
+
+		.content-view { @include position(absolute, $topMargin 0px 40px 0px);}}}
+
+
+/*----------------- media-list css start from here -----------------*/
+.left-navigation .media-list {
+  @include scrollable(auto);
+  .divider {border-top: 1px solid #efefef}
+  
+  .selected {background-color: $left-media-list-highlight-color;}
+
+  .media {
+    cursor: pointer;
+    margin-top: 0;
+    padding: 12px 20px 8px 20px;
+
+    &:hover { background-color: $left-media-list-highlight-color;}
+
+    .media-heading {
+      font: bold 15px;
+
+      .price { color: $purplePink;}}
+
+    .description {
+      color: $gray;
+      font-size: 13px;
+      height: 36px;
+      overflow: hidden;
+      text-overflow: ellipsis;}
+
+    .detail {
+      color: #aaa;
+      font-size: 12px;
+      line-height: 24px;
+      margin-bottom: 0px;
+
+      button{ width: 40px; }
+
+      .popover-title { line-height: 16px;}}
+
+    .thumbnail {
+      background-color: white;
+      @include size(64px);
+      @include box-shadow(0 8px 6px -6px hsla(0, 0%, 0%, 0.20));}}}
+
+
+/*----------------- sticky-footer css start from here -----------------*/
+.sticky-footer {
+  border-top: 1px solid #efefef;
+  @include box-shadow(0 -1px 5px 1px hsla(0, 0%, 0%, 0.05));
+
+  nav[role="navigation"] li {
+  border-right: 1px solid #ddd;
+  float: left;
+  font-size: 13px;
+  margin-top: 10px;    
+  
+  &:last-child { border-right: none;}
+  
+  a {
+    @include border-radius(4px);
+    color: $grayLight;
+    float: left;
+    padding: 0 10px;
+    text-decoration: none;
+
+    &:hover, &:focus, &:active a { color: $grayDark; }
+    &:active {color:$gray;}}}}
+
+
+/*----------------- right-content css start from here -----------------*/
+.right-content {
+  background-color: $rightContentBackgroundColor;
+  border-left: 1px solid $grayLighter;
+  @include position(absolute, $topMargin 0px 0px $left-view-width);
+  overflow: hidden;
+}
+
+
+/**
+ * Description: recipe page css all in here
+*/
+/*----------------- recipe-page css start from here -----------------*/
+.recipe-page {
+  overflow: auto;
+  .container {
+    width: 100%;
+
+    .angles{
+      @include size(100% 8px);
+      @include retina-image(angle, 16px 8px);}}}
+
+
+/*----------------- hero-unit css start from here -----------------*/
+$heroUnitHeight: 400px;
+
+.recipe-page .hero-unit {
+  height: $heroUnitHeight;
+  margin: 0;
+  padding: 0;
+
+  .center-cropped {
+    overflow: hidden;
+    @include marginCenter(900px);
+    height: $heroUnitHeight;
+    background-position: center center;}
+
+  .overlay {
+    position: relative;
+    top: -$heroUnitHeight;
+    text-shadow: 0px 1px hsla(0%, 0%, 0%, 0.4);
+    @include background-image(linear-gradient(90deg, hsla(0%, 0%, 0%, 0) 50%, hsla(0%, 0%, 0%, 0.75) 90% ));
+    @include size(100%);
+    
+    .introduction {
+      text-align: left;
+      @include size(380px 100%);
+      padding-top: 30px;
+
+      .btn-group {
+        @include border-radius(3px);
+        @include box-shadow(0 0 3px 2px hsla(0, 0%, 0%, 0.10));
+        background-color: white;
+        margin-bottom: 10px;
+        text-shadow: 0px 0px white;
+        width: 360px;
+
+        .btn {
+          border: 0px;
+          border-right: 1px solid $grayLighter;
+          background: transparent;
+          font: 15px bold;
+          text-align: center;
+          padding: 0;
+          line-height: 52px;
+          width: 121px;
+
+          &:hover { background-color: #f3f3f3;}
+
+          &:last-child { border-right: 0px; width: 120px;}
+
+          i {color: #ff5f8f;}}}
+
+      .price-info {
+        line-height: 66px;
+        margin-bottom: 0px;
+
+        .price {
+          color:$purplePink;
+          font: 40px bold;}
+
+        .per-pack { color: $grayLighter;}}
+
+      .basic-info {
+
+        .heading{
+          line-height: 42px;
+          margin-bottom: 0;
+          .title {
+            color: #ffe8a9;
+            font-size: x-large;}
+
+          .info {
+            color: $grayLight;
+            font-size: 12px;
+            padding-top: 4px;}}
+
+        .category {
+          font-size: 13px;
+          color: #1381bf;}
+
+        .description {
+          font-size: 16px;
+          line-height: 24px;
+          color: white;}}}}
+
+  img { height: 100%;}}
+
+
+/*----------------- .recipe css start from here -----------------*/
+.recipe-page .recipe { 
+  padding-top: 40px;
+  @include marginCenter(880px);
+
+  .ingredient {
+    display: inline-block;
+
+    .table {
+      width: grid-width(1);  
+      margin-left: $gw-gutter;
+      float: left;
+
+      td{
+        padding: 4px;
+        font-size: 14px;
+        color:#909090;}
+
+      .ingredient-heading, .seasonings-heading, .others-heading{
+        margin: 0;
+        color: #00a99d;
+        font-size: 16px;
+        font-weight: bold;}
+
+      .seasonings-heading { color: #f7931e;}
+      .others-heading { color: #ff7bac; }}}}
+
+
+/*----------------- steps css start from here -----------------*/
+.recipe-page .steps-section { 
+  background: $baseBackgroundColor;
+
+  .steps-heading{
+    @include marginCenter(880px);
+    font-size: 30px;
+    line-height: 60px;
+    margin-bottom: 20px;}
+
+  .steps {
+    @include marginCenter(880px);
+
+    p { margin-top: 4px;}
+
+    hr {
+      clear: both;
+      margin: 40px 0px;
+      border-top: 1px dotted #ccc;
+      height: 1px;}
+
+    li {
+      display: inline-block;
+      margin-bottom: 40px;
+      width: 100%;
+
+      .step-info {
+        margin-left: $gw-gutter;
+        width: grid-width(2); 
+
+        .step-num {
+          font-family: 'Nothing You Could Do', cursive;
+          font-size: 42px;
+          line-height: 52px;
+          margin-bottom: 10px;}
+
+        .step-detail {
+          color: $gray;
+          font-size: 24px;
+          line-height: 34px;}}
+
+
+      .step-photo {
+        @include transform(rotate(-3deg));
+        margin-left: $gw-gutter;
+        margin-top: 20px;
+        width: grid-width(1); 
+
+        img{@include box-shadow(-4px 8px 6px -4px hsla(0, 0, 0, 0.2));}}
+
+      &:nth-child(odd){
+        .step-photo{
+          @include transform(rotate(3deg));
+
+          img{ @include box-shadow(4px 8px 6px -4px hsla(0, 0, 0, 0.2));}}}}}}
+
+
+/**
+ * Description: featured page css all in here
+*/
+
+/*----------------- featured css start from here -----------------*/
+.featured-page {
+  background-color: $baseBackgroundColor;
+  margin-bottom: 50px;
+  overflow: auto;
+
+  .container {
+    @include marginCenter(820px);
+    margin: 20px auto;
+
+    .page-frame, .helper-frame {
+      @include border-radius(4px);
+      @include box-shadow(0px 2px 4px 0px hsla(0, 0%, 0%, 0.15) ); // drop shadow
+      background: white;
+      margin-bottom: 20px;}
+
+    .page-frame {padding: 20px 0;}}
+
+
+/*----------------- features-items css start from here -----------------*/
+.features-items, .helper-tools{
+  .item {
+    padding: 10px 0px;
+    float: left;}}
+
+.features-items{
+  .item {
+    width: 33.33%;
+
+    p[class*="fontawesome"], .title{
+      color: #2fc3d1;
+      font-size: 120px;
+      line-height: 100px;
+      margin-top: 10px;}
+
+    &:nth-child(2) p[class*="fontawesome"], &:nth-child(2) .title{ color: #f8b86d; }
+    &:nth-child(3) p[class*="fontawesome"], &:nth-child(3) .title{ color: #fd699d; }
+
+    .title { 
+      font-size: 22px; 
+      font-weight: bold;
+      line-height: 40px;
+      margin: 0;}
+
+    .subtitle {
+      color:$grayLight;
+      font-size:14px;
+      line-height: 20px;
+      padding: 0 35px;}}}}
+
+
+/*----------------- featured-title and subtitle css start from here -----------------*/
+.featured-page .featured-title {
+    color: $gray;
+    font-size: 30px;
+    line-height: 60px;}
+
+.featured-page .featured-subtitle {
+    color: $grayLight;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0px 40px;
+    margin-bottom: 20px;}
+
+
+/*----------------- featured-products css start from here -----------------*/
+$productHeightLarge: 300px;
+$productHeightSmall: 200px;
+$productWidthSmall: 273px;
+
+.featured-page .featured-products, .featured-page .featured-product {
+  clear: both;
+  .product-large .product-detail { top:-$productHeightLarge;}
+  .product-large {@include size(100% $productHeightLarge);}
+  .product-small .product-detail { top:-$productHeightSmall;}
+  .product-small {float: left; @include size($productWidthSmall $productHeightSmall);}
+  .show {opacity: 1;}
+  .small {@include size(41px);}
+  .large {@include size(82px);}}
+
+.featured-page .featured-product {
+  .product, .product-detail, img { height: $productHeightLarge;}}
+
+.featured-page .featured-products {
+  .product, .product-detail, img { height: $productHeightSmall}}
+
+.featured-page .featured-product, .featured-page .featured-products {
+  overflow: hidden;
+
+  .product {
+    overflow: hidden;
+    
+    background: $gray;
+
+    img { width:100%;}
+
+    img { background-position: center center;}
+
+    .product-detail {
+      position: relative;
+      background-color: rgba(black, 0.55);
+      overflow: hidden;
+
+      blockquote { border-left:1px solid $grayLight; }
+
+      .left-content {
+        color: white;
+        margin: 80px 0px 0px 82px;
+        width: 626px;
+        padding-left: 6px;
+
+        .product-title {
+          color: #2fc3d1;
+          font-size: 24px;
+          line-height: 40px;}
+
+        .product-subtitle { }}
+
+      .right-bar {
+        .color-block {
+          background:#f2e1ac;
+
+          &:nth-child(2) {background: #f2836b;} 
+          &:nth-child(3) {background: #f2594b;}}}}}}
+
+
+/*----------------- helper-tools css start from here -----------------*/
+.helper-tools {
+  .item {
+    border-right:1px solid $grayLighter;
+    cursor: pointer;
+    width: 273px;
+
+    &:nth-child(1){@include border-left-radius(4px);}
+
+    &:nth-child(3){
+      @include border-right-radius(4px);
+      border-right: 0px; 
+      width: 272px;}
+
+    p {font-size: 14px; margin-bottom: 0px;}
+ 
+    p[class*="fontawesome"] {
+      font-size: 22px; 
+      margin-bottom: 4px;}}
+
+  .item:hover { background-color: #f3f3f3;}
+
+  a {text-decoration: none;}}

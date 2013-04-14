@@ -3,51 +3,44 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap_and_overrides";
+// "微軟正黑體"
 
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, "微軟正黑體", sans-serif;
-}
+	font-family: "Helvetica Neue", Helvetica, Arial , sans-serif;}
+
+ol { list-style: decimal; margin-bottom: 0;}
 
 body {
 	background-color: #eeeeee;
 	color: #606468;
 	font-family: 'Open Sans', Arial, sans-serif;
 	font-size: 14px;
-	line-height: 1.5em;
-}
+	line-height: 1.5em;}
 
-.wrapper
-{
+.wrapper {
 	width: 320px;
 	margin: 120px auto;
 	
 	.logo{
-			margin: 0 auto 10px auto;
-			width: 150px;
-	}
+		margin: 0 auto 10px auto;
+		width: 150px; }
 
 	form {
 
-		
 		.input-prepend {
 			.add-on {
 				height: 30px;
 				min-width: 30px;
-				line-height: 30px;
-			}
+
+				label { line-height: 30px; }}
+
 			.prependedInput {
 				width: 265px;
-				height: 30px;
-			}
-		}
+				height: 30px; }}
 
 		p { 
 			color: $grayLight; 
-			text-align: center; 
-			margin-top: 8px;
+			text-align: left; 
+			margin-top: 8px;}
 
-		}
-
-		.btn-primary { @include buttonBackground(#ff207b, #e81563); }
-	}
-}
+		.btn-primary { @include buttonBackground(#ff207b, #e81563); }}}

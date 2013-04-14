@@ -14,26 +14,25 @@
   #login
     .logo
       =image_tag("logo-login.png")
-    /%form
-    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      = devise_error_messages!
       .input-prepend
         %span.add-on
           %label.fontawesome-user{:for => 'user_name'}
-        = f.text_field :name, :autofocus => true, class: 'prependedInput', placeholder: '稱呼', label: false
+        = f.text_field :name, :required => true, :autofocus => true, class: 'prependedInput', placeholder: '稱呼', label: false
       .input-prepend
         %span.add-on
           %label.fontawesome-envelope{:for => 'user_email'}
-        = f.text_field :email, :autofocus => true, class: 'prependedInput', placeholder: '電郵', label: false
+        = f.text_field :email, :required => true,  :autofocus => true, class: 'prependedInput', placeholder: '電郵', label: false
       .input-prepend
         %span.add-on
           %label.fontawesome-key{:for => 'user_password'}
-        = f.text_field :password, :autofocus => true, class: 'prependedInput', placeholder: '密碼', label: false
+        = f.text_field :password, :required => true, :autofocus => true, class: 'prependedInput', placeholder: '密碼', label: false, type: "password"
       .input-prepend
         %span.add-on
           %label.fontawesome-key{:for => 'user_password_confirmation'}
-        = f.text_field :password_confirmation, :autofocus => true, class: 'prependedInput', placeholder: '確認密碼', label: false
+        = f.text_field :password_confirmation, :required => true, :autofocus => true, class: 'prependedInput', placeholder: '確認密碼', label: false, type: "password"
       :markdown
           輸入以上的資料，輕輕鬆鬆註冊，當點擊註冊時即等同於同意 [Cookquery Terms](http://ruby-lang.org) .
-      %hr
       %button.btn.btn-primary.btn-large.btn-block{:type => "submit"} 
         %b 立即註冊

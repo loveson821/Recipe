@@ -1,4 +1,378 @@
-%h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+
+.navbar.navbar-fixed-top
+  .message 
+  /
+    .alert.text-center
+      %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+      %strong Warning!
+      Best check yo self, you're not looking too good.
+  .highlight-bar
+  .navbar-inner
+    .fluid-container
+      %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .nav-collapse.collapse
+
+        %ul.nav
+          %li.dropdown.categories
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} 
+              食譜類型
+              %b.caret
+            %ul.dropdown-menu{"data-bind" => "template:{name: 'category-list-template', foreach: categories}"}
+        %form.navbar-search
+          %input.typeahead{:placeholder => "搜索食譜", :type => "text", "data-provide" => "typeahead", "data-source" => '["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]', "data-items" => "4"}
+          %a.fontawesome-search{style:"position:relative; left:-24px; top:-2px"}
+
+
+        %ul.nav.pull-right.tool-bar.text-center
+          %li
+            %a{:href => '/home'}
+              %i.fontawesome-home
+          %li.dropdown
+            %a.dropdown-toggle{role:"button", "data-toggle"=>"dropdown"}
+              %i.fontawesome-user
+              ku4n
+            %ul.dropdown-menu.text-left{"aria-labelledby" => "dLabel", :role => "menu"}
+              %li
+                %a{:href => "#", :tabindex => "-1"} 個人資料
+              %li.divider
+              %li
+                %a{:href => "users/sign_out", :tabindex => "-1", "data-method" =>"delete"} 登出
+
+          %li.dropdown
+            %a.dropdown-toggle{role:"button", "data-toggle"=>"dropdown"}
+              %i.fontawesome-shopping-cart
+              %span.badge.badge-info 8
+            %ul.dropdown-menu.text-left{"aria-labelledby" => "dLabel", :role => "menu"}
+              %li
+                %a{:href => "#", :tabindex => "-1"} product 1
+              %li.divider
+              %li
+                %a{:href => "#", :tabindex => "-1"} product 2
+              %li.divider
+              %li
+                %a{:href => "#", :tabindex => "-1"} product 3
+              %li.divider
+              %li
+                %a{:href => "#", :tabindex => "-1"} Separated link
+          %li.dropdown
+            %a.dropdown-toggle{role:"button", "data-toggle"=>"dropdown"}
+              %i.fontawesome-bookmark
+              %span.badge.badge-info 9
+            %ul.dropdown-menu.text-left{"aria-labelledby" => "dLabel", :role => "menu"}
+              %li
+                %a{:href => "#", :tabindex => "-1"} Action
+              %li
+                %a{:href => "#", :tabindex => "-1"} Another action
+              %li
+                %a{:href => "#", :tabindex => "-1"} Something else here
+              %li.divider
+              %li
+                %a{:href => "#", :tabindex => "-1"} Separated link
+          %li.dropdown
+            %a.dropdown-toggle{role:"button", "data-toggle"=>"dropdown"}
+              %i.fontawesome-cog
+            %ul.dropdown-menu.text-left{"aria-labelledby" => "dLabel", :role => "menu"}
+              %li
+                %a{:href => "#", :tabindex => "-1"} Action
+              %li
+                %a{:href => "#", :tabindex => "-1"} Another action
+              %li
+                %a{:href => "#", :tabindex => "-1"} Something else here
+              %li.divider
+              %li
+                %a{:href => "#", :tabindex => "-1"} Separated link
+
+.wrapper
+  .left-navigation.pull-left
+    .navigation-list
+      .content-view
+        .scrollable{"data-bind" => "with: chosenCategoryData"}
+          %ul.media-list{"data-bind" => "template: {name: 'recipe-list-template', foreach: recipes}, afterRender: $root.recipeListDidRender"}
+        .sticky-footer.clearfix
+          %nav.clearfix{:role => "navigation"}
+            %ul.clearfix
+              %li
+                %a{:href => "#"} Contact Us
+              %li
+                %a{:href => "#"} FAQ
+              %li
+                %a{:href => "#"} About
+              %li
+                %a{:href => "#"} Blog
+
+  .right-content.pull-left{"data-bind" => "template: {name: templateToUse, afterRender:pageDidRender}"}
+    / =render "recipe"
+          
+/template for recipe media list
+%script#recipe-list-template{:type => "text/html"}
+  %li.media{"data-bind"=>"attr: {id:id}, click: $root.goToRecipe, css: { selected: id == $root.chosenRecipeId() }"} 
+    %a.pull-left{:href => "#", :class => "thumbnail"}
+      %img{"data-src" => "holder.js/64x64", :src => "http://lorempixel.com/64/64/food/1", "data-bind" => "attr: {src: imageUrl}"}
+    .media-body
+      %p.media-heading
+        %strong
+          %span{"data-bind"=>"text: title"} 焦糖椰汁軟糕
+        %strong
+          %span.price.pull-right{"data-bind"=>'text: price'} 
+          %span.price.pull-right $
+      %p.description{"data-bind"=>"text: description"}
+        使用台灣特有的椰子汁所制成的軟糕。入口鬆化，回味無窮。加上香脆的紅焦糖口.
+      .detail
+        %i.fontawesome-user 
+        %span{"data-bind" => "text: quantity"} 
+        %span 人份量
+        &nbsp&nbsp
+        %i.fontawesome-time
+        %span 約需
+        %span{"data-bind" => "text: estimateTime"}
+        %span 分鐘
+        %a.btn.btn-mini.btn-link.pop.pull-right#pop1{"data-placement" => "left", "data-toggle" => "popover", :href => "#", :title => ""}
+          %i.fontawesome-share
+        #pop1_content.hidden
+          .popTitle
+            選擇動作 
+          .popContent
+            .btn-group
+              %button.btn{:href => "#"}
+                %i.fontawesome-shopping-cart 
+              %button.btn{:href => "#"}
+                %i.fontawesome-star 
+              %button.btn{:href => "#"} 
+                %i.fontawesome-facebook
+              %button.btn{:href => "#"} 
+                %i.fontawesome-twitter
+  %li.divider
+  
+
+%script#category-list-template{:type => "text/html"}
+  %li.text-center{"data-bind"=>"css: { selected: id == $root.chosenCategoryId() }, click: $parent.goToCategory"}
+    %a{:href => "#"}
+      %i.fontawesome-food
+      %span{"data-bind"=>"text: name"}
+
+
+%script#recipe-page-template{:type => "text/html"}
+  .content.recipe-page{"data-bind" => "with: chosenRecipeData"}
+    .container.clearfix
+      .hero-unit
+        .center-cropped
+          %img{src:"http://lorempixel.com/900/400/food/"}
+          .overlay
+            .introduction.pull-right
+              .btn-group
+                %button.btn
+                  %i.fontawesome-bookmark
+                  收藏
+                %button.btn
+                  %i.fontawesome-print
+                  列印
+                %button.btn
+                  %i.fontawesome-shopping-cart
+                  購買
+              .basic-info
+                %p.heading
+                  %span.title{"data-bind" => "text: title"}
+                / %p
+                /   %span.info.pull-right 
+                /     %i.fontawesome-food
+                /     1人份量 &nbsp&nbsp
+                /     %i.fontawesome-time
+                /     約需20分鐘
+                / %ul.category.inline
+                /   %li 肉類,
+                /   %li A類,
+                /   %li A類
+                %p.description{"data-bind" => "text: description"} 泰國料理的熱門菜～椒麻雞，那酸中帶麻又待辣的滋味很多人都非常喜愛，這回蘿瑞娜把原本油炸的雞肉換成汆燙的里肌肉片，不但更加爽口無負擔，而且風味絲毫不減。涼拌的椒麻肉片是先用龜甲萬甘醇醬油把里肌肉稍微醃漬後汆燙，再淋上甘醇醬油與魚露檸檬汁調配而成的經典椒麻醬汁，酸甜麻辣的醬汁搭配上爽脆的豆芽軟Q的肉片，是道低油下飯的美味料理。
+              %p.price-info
+                %span.price $
+                %span.price{"data-bind" => "text: price"}
+                %em.per-pack /每套
+      .recipe
+        .ingredient.row
+          %table.table
+            %thead
+              %tr
+                %td 
+                  %p.ingredient-heading 食材
+            %tbody
+              %tr
+                %td 
+                  里肌肉 
+                  %span.pull-right 250g
+              %tr
+                %td 
+                  豆芽 
+                  %span.pull-right 250g
+              %tr
+                %td 
+                  辣椒 
+                  %span.pull-right 2支
+              %tr
+                %td 
+                  蔥 
+                  %span.pull-right 1支
+              %tr
+                %td 
+                  蒜 
+                  %span.pull-right 4瓣
+              %tr
+                %td 
+                  香菜 
+                  %span.pull-right 1小把
+          %table.table
+            %thead
+              %tr
+                %td
+                  %p.seasonings-heading 調味料 
+            %tbody
+              %tr
+                %td 
+                  魚露 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  檸檬汁 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  香油 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  糖 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  花椒粉 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  龜甲萬甘醇醬油 
+                  %span.pull-right 1大匙
+          %table.table
+            %thead
+              %tr
+                %td
+                  %p.others-heading 其他 
+            %tbody
+              %tr
+                %td 
+                  魚露 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  檸檬汁 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  香油 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  糖 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  花椒粉 
+                  %span.pull-right 1大匙
+              %tr
+                %td 
+                  龜甲萬甘醇醬油 
+                  %span.pull-right 1大匙
+      .angles
+      .steps-section
+        .steps-heading
+          %p 作法
+        %ul.steps
+          %li.row
+            .pull-left.step-info
+              %p.step-num step 1
+              %p.step-detail 雞胸肉切片加入調味料A醃約10分鐘備用。
+              %p 調味料， 調味料， 調味料
+            .pull-right.step-photo
+              %img.img-polaroid{"data-src" => "holder.js/250x300", :src => "http://lorempixel.com/250/300/food/3"}
+          %hr
+          %li.row
+            .pull-right.step-info
+              %p.step-num step 2
+              %p.step-detail 雞胸肉切片加入調味料A醃約10分鐘備用。
+              %p 調味料， 調味料， 調味料
+            .pull-left.step-photo
+              %img.img-polaroid{"data-src" => "holder.js/250x300", :src => "http://lorempixel.com/350/250/food/3"}
+          %hr
+          %li.row
+            .pull-left.step-info
+              %p.step-num step 3
+              %p.step-detail 雞胸肉切片加入調味料A醃約10分鐘備用。
+              %p 調味料， 調味料， 調味料
+            .pull-right.step-photo
+              %img.img-polaroid{"data-src" => "holder.js/250x300", :src => "http://lorempixel.com/250/300/food/3"}
+          %hr
+
+
+%script#featured-page-template{:type => "text/html"}
+  .content.featured-page
+    .container
+      .page-frame.text-center
+
+        %p.featured-title 利用更少的時間 享受更多的樂趣
+        %p.featured-subtitle 是一個介紹食譜、烹飪和銷售食材和調味料的網站。提供一站式服務，包括購買食材、香料和用具等。用戶只需根據本站的食譜即可制作出各種美味的料理。對料理有興趣的你必不能錯過的網站喔！！
+
+        %hr
+
+        .features-items.clearfix
+          .item.clearfix
+            %p.fontawesome-heart
+            %p.title 選取菜譜
+            %p.subtitle 遊覧和收藏各種菜譜, 用戶可以 根據菜譜的步驟制作 
+          .item.clearfix
+            %p.fontawesome-shopping-cart
+            %p.title 購買食材
+            %p.subtitle 遊覧和收藏各種菜譜, 用戶可以 根據菜譜的步驟制作 
+          .item.clearfix
+            %p.fontawesome-truck
+            %p.title 運送材料
+            %p.subtitle 遊覧和收藏各種菜譜, 用戶可以 根據菜譜的步驟制作 
+
+        .featured-product{"data-bind" => "foreach: featuredRecipes"}
+          .product.product-large
+            %img{"data-src" => "holder.js/1280x300", src: 'http://lorempixel.com/900/350/food/1'}
+            .product-detail.show
+              %blockquote.left-content.pull-left.text-left
+                %p.product-title
+                  %strong 朱古力雪糕卷
+                %p.product-subtitle
+                  肚子餓又怕胖，推薦健康點心拯救你～每朵菇菇也充滿水份，口感爽脆。搭配別俱風味的麻油海苔，帶著流連忘返的麻油香氣，口感清爽而不膩，酥脆紮實的新鮮原料，徹底抓住了我的胃！超愛麻油海苔的，一吃就上癮！❤（≧∀≦）ｖ
+                %small
+                  %em
+                    大胃王
+                    %cite{:title => "Source Title"} 小編
+              .right-bar.pull-right
+                .color-block.large
+                .color-block.large
+                .color-block.large
+
+        %p other things don't know yet
+
+      .helper-frame.text-center
+        .helper-tools.clearfix
+          %a.item.clearfix
+            %p.fontawesome-envelope-alt
+            %p.title 聯絡我們
+            / %p.subtitle 遊覧和收藏各種菜譜, 用戶可以 根據菜譜的步驟制作 
+          %a.item.clearfix
+            %p.fontawesome-comments
+            %p.title FAQ
+            / %p.subtitle 遊覧和收藏各種菜譜, 用戶可以 根據菜譜的步驟制作 
+          %a.item.clearfix
+            %p.fontawesome-wrench
+            %p.title 服務支援
+            / %p.subtitle 遊覧和收藏各種菜譜, 用戶可以 根據菜譜的步驟制作 
+
+
+
+= javascript_include_tag "application"
+= javascript_include_tag "home"

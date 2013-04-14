@@ -12,15 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-fileUpload/basic
 //= require bootstrap
 //= require hisrc
-//= require holder
-//= require jquery.mwheelIntent
-//= require jquery.mousewheel
-//= require sammy
-//= require knockout
-//= require knockout.mapping
-//= require helpers/helpers
-//= require nested_form
-//= require manuals
+
