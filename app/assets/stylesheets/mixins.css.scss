@@ -4,3 +4,13 @@
 	height:21px;
 	display: inline-block;
 }
+
+@mixin scrollable($overflow) {overflow: $overflow; position: absolute;}
+
+@mixin marginCenter($width) {width:$width; margin: 0 auto;}
+
+@mixin border-radius($radius) {
+  @include border-bottom-radius($radius);
+  @include border-left-radius($radius);
+  @include border-right-radius($radius);
+  @include border-top-radius($radius);}
