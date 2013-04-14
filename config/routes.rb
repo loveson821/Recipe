@@ -15,8 +15,8 @@ Recipe::Application.routes.draw do
   
   devise_scope :user do
     get '/login', :to => "devise/sessions#new"
-    get '/signup', :to => "devise/registrations#new"
-    delete '/logout', :to => "devise/sessions#destroy"
+    get '/sign_up', :to => "devise/registrations#new"
+    delete '/sign_out', :to => "devise/sessions#destroy"
   end
   
   resources :categories
