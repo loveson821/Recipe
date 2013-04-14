@@ -5,8 +5,9 @@ class ManualsController < ApplicationController
   # GET /manuals
   # GET /manuals.json
   def index
-    @manuals = Manual.all
-
+    #@manuals = Manual.all
+    @manuals = Manual.pack(0,3)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @manuals }

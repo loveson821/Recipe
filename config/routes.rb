@@ -1,6 +1,9 @@
 Recipe::Application.routes.draw do
 
-  get "home/index"
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  #ActiveAdmin.routes(self)
+
+  #get "home/index"
 
   # This line mounts Spree's routes at the root of your application.
   # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
@@ -41,5 +44,6 @@ Recipe::Application.routes.draw do
   root :to => "marketing#index"
   
   devise_for :users
+  ActiveAdmin.routes(self)
   resources :users
 end
