@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout 'account'
   before_filter :authenticate_user!
 
   def index
