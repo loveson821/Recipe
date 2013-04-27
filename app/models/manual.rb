@@ -18,4 +18,23 @@ class Manual < ActiveRecord::Base
   #Record.find(:all, :conditions => {:offset => params[:page] * 10, :limit => 10})
   default_scope order('id DESC')
   scope :pack, Proc.new{ |page,limit| offset(page*limit).limit(limit) }
+
+
+  
+  def self.search(search)
+    if search
+      where(['title LIKE ?', "%#{search}%"])
+    else
+      
+    end
+  end
+
+  def self.paginate(page,limit)
+    if( page && limit)
+      pack(page.to_i,limit.to_i)
+    else
+      pack(0,20)
+    end
+  end
+  
 end

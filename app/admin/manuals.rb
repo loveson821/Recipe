@@ -22,6 +22,7 @@ ActiveAdmin.register Manual do
   form do |f|
     f.inputs "Details" do
       f.input :user
+      f.input :categories, as: :check_boxes, collection: Category.all
       f.input :title
       f.input :body
       f.input :publish_date

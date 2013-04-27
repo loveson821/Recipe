@@ -26,9 +26,7 @@ Recipe::Application.routes.draw do
   end
 
   resources :manuals do
-    collection do
-      get :search
-    end
+    
   end
 
   namespace :admin do

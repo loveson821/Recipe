@@ -6,7 +6,11 @@ class ManualsController < ApplicationController
   # GET /manuals.json
   def index
     #@manuals = Manual.all
-    @manuals = Manual.pack(0,3)
+    @manuals = Category.find_by_name(params[:cat]).manuals if params[:cat]
+    @manuals = @manuals.where(['title LIKE ?', "%#{params[:q]}%"]) if params[:q]
+    @manuals = @manuals.paginate(params[:page],params[:limit])
+    #@manuals = Manual.paginate(params[:page],params[:limit])
+    #@manuals = Manual.search(params[:q])
     
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +22,6 @@ class ManualsController < ApplicationController
   # GET /manuals/1.json
   def show
     @manual = Manual.find(params[:id])
-    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @manual }
@@ -94,11 +97,8 @@ class ManualsController < ApplicationController
   
   # Search /manuals?search=[:search]
   # Not finish
-  def search
-    respond_to do |format|
-      format.json {render json: @search_result}
-    end
-  end
+
+  
   
   
 end
